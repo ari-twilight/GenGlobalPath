@@ -1,0 +1,18 @@
+from VtkAdaptor import *
+if __name__=='__main__':
+    vtkAdaptor = VtkAdaptor()
+    vtkAdaptor.setBackgroundColor(0.95,0.95,0.95)
+    vtkAdaptor.drawAxes()
+    vtkAdaptor.drawPoint(Point3D(10,10,10)).GetProperty().SetColor(1,0,0)
+    vtkAdaptor.drawPoint(Point3D(50,50,50)).GetProperty().SetColor(1,0,0)
+    polyline = Polyline()
+    polyline.addPoint(Point3D(1,1,1))
+    polyline.addPoint(Point3D(50, 2, 10))
+    polyline.addPoint(Point3D(20, 10, 30))
+    polyline.addPoint(Point3D(50, 80, 55))
+    polylineActor = vtkAdaptor.drawPolyline(polyline)
+    polylineActor.GetProperty().SetColor(0.1,0.7,0.7)
+    polylineActor.GetProperty().SetLineWidth(2)
+    stlActor = vtkAdaptor.drawSTLModel("D:\\5760高温机匣模型第三件.STL")
+    stlActor.SetPosition(0,150,150)
+    vtkAdaptor.display()
